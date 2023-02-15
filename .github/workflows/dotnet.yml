@@ -19,13 +19,7 @@ jobs:
     # 修改成專案名稱    
     - name: Publish .NET Core Project
       run: dotnet publish BlazorGitHubPages.csproj -c Release -o release --nologo
-      
-    - name: Commit wwwroot to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.3.3
-      with:
-          BRANCH: gh-pages
-          FOLDER: release/wwwroot
-          
+                
      # 修改 index.html 的 base href 設定
     - name: 修改 index.html 的 base href 設定
       run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPages\/" \/>/g' release/wwwroot/index.html
@@ -37,3 +31,9 @@ jobs:
      # 複製 index.html 成 404.html
     - name: 複製 index.html 成 404.html
       run: cp release/wwwroot/index.html release/wwwroot/404.html
+      
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+          BRANCH: gh-pages
+          FOLDER: release/wwwroot
