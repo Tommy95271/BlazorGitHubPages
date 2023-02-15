@@ -25,3 +25,7 @@ jobs:
       with:
           BRANCH: gh-pages
           FOLDER: release/wwwroot
+          
+     # 修改 index.html 的 base href 設定
+    - name: 修改 index.html 的 base href 設定
+      run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPages\/" \/>/g' release/wwwroot/index.html
