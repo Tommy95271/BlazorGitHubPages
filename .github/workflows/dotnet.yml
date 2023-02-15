@@ -33,3 +33,7 @@ jobs:
      # 新增 .nojekyll 檔
     - name: 新增 .nojekyll 檔
       run: touch release/wwwroot/.nojekyll
+      
+     # 複製 index.html 成 404.html
+    - name: 複製 index.html 成 404.html
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
